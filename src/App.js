@@ -27,7 +27,7 @@ export default class App extends Component {
     axios
       .get("https://intense-everglades-40088.herokuapp.com/api/lines")
       .then(res => {
-        const randomNumber = Math.floor(Math.random() * 20 + 1);
+        const randomNumber = Math.floor(Math.random() * res.data.length + 1);
         const quote = res.data[randomNumber];
         console.log(randomNumber);
         this.setState({ message: quote.line });
