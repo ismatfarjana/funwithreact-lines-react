@@ -57,9 +57,7 @@ export default class App extends Component {
         <div className="addline">
           <AddLine submitLine={this.handleSubmitLine} />
         </div>
-        <footer>
-          React Lesson of CODER ACADEMY &copy; SyedaIsmatFarjana 2020
-        </footer>
+        <footer>React Lesson Practice &copy; SyedaIsmatFarjana 2020</footer>
       </div>
     );
   }
