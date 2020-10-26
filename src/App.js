@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import axios from "axios";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: "Ready to Read some Lines?"
+    };
+  }
+
+  generateRandomLine = () => {
+    axios
+      .get("https://intense-everglades-40088.herokuapp.com/api/lines")
+      .then(res => {
+        // console.log(res.data);
+        const randomNumber = Math.floor(Math.random() * 5 + 1);
+        const quote = res.data[randomNumber];
+        this.setState({ message: quote.line });
+      });
+  };
+
+  render() {
+    return (
+      <div className="message">
+        <h1>Lines of Zeb</h1>
+
+        <h2>{this.state.message}</h2>
+        <button onClick={this.generateRandomLine}>CLICK ME</button>
+        <footer>
+          React Lesson of CODER ACADEMY &copy; SyedaIsmatFarjana 2020
+        </footer>
+      </div>
+    );
+  }
 }
-
-export default App;
