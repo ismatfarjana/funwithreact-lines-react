@@ -6,7 +6,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      message: "Ready to Read some Lines?"
+      message: "CLICK TO GET LINES"
     };
   }
 
