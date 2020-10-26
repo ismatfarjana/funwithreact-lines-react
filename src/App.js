@@ -27,7 +27,7 @@ export default class App extends Component {
     axios
       .get("https://intense-everglades-40088.herokuapp.com/api/lines")
       .then(res => {
-        const randomNumber = Math.floor(Math.random() * 4 + 1);
+        const randomNumber = Math.floor(Math.random() * 8 + 1);
         const quote = res.data[randomNumber];
         console.log(randomNumber);
         this.setState({ message: quote.line });
@@ -57,6 +57,7 @@ export default class App extends Component {
         <div className="addline">
           <AddLine submitLine={this.handleSubmitLine} />
         </div>
+
         <footer>React Lesson Practice &copy; SyedaIsmatFarjana 2020</footer>
       </div>
     );
