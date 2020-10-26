@@ -14,7 +14,7 @@ body {
   display: flex;
   flex-flow: column;
   justify-content: space-around;
-  margin: 20vw 10px;
+  margin: 10vw 10px;
   background-color: rgb(144, 205, 233);
   padding: 80px 30px;
 }
