@@ -18,6 +18,18 @@ body {
   background-color: rgb(144, 205, 233);
   padding: 80px 30px;
 }
+
+.addLine {
+  display: flex;
+  flex-flow: column;
+  width: 40vw;
+  margin: auto;
+  margin-top: 40px;
+}
+
+input {
+  margin: 10px 0;
+}
 button {
   width: 10vw;
   align-self: center;

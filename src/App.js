@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import axios from "axios";
+import AddLine from "./components/AddLine";
 
 export default class App extends Component {
   constructor(props) {
@@ -8,6 +9,18 @@ export default class App extends Component {
     this.state = {
       message: "CLICK TO GET LINES"
     };
+  }
+
+  getLines = () => {
+    axios
+      .get(`https://intense-everglades-40088.herokuapp.com/api/lines`)
+      .then(res => {
+        this.setState({ lines: res.data });
+      });
+  };
+
+  componentDidMount() {
+    this.getLines();
   }
 
   generateRandomLine = () => {
@@ -21,6 +34,18 @@ export default class App extends Component {
       });
   };
 
+  handleSubmitLine = newLine => {
+    axios
+      .post("https://intense-everglades-40088.herokuapp.com/api/lines", {
+        line: newLine.line
+      })
+      .then(res => {
+        const updatedLines = this.state.lines.concat(res.data);
+        this.setState({ blogs: updatedLines });
+      })
+      .catch(err => console.log(err));
+  };
+
   render() {
     return (
       <div className="message">
@@ -28,6 +53,10 @@ export default class App extends Component {
 
         <h2>{this.state.message}</h2>
         <button onClick={this.generateRandomLine}>CLICK ME</button>
+
+        <div className="addline">
+          <AddLine submitLine={this.handleSubmitLine} />
+        </div>
         <footer>
           React Lesson of CODER ACADEMY &copy; SyedaIsmatFarjana 2020
         </footer>
