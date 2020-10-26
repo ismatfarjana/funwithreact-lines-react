@@ -30,6 +30,7 @@ export default class App extends Component {
         const randomNumber = Math.floor(Math.random() * res.data.length + 1);
         const quote = res.data[randomNumber];
         console.log(randomNumber);
+        console.log("There you go! you got your line!");
         this.setState({ message: quote.line });
       });
   };
@@ -42,6 +43,7 @@ export default class App extends Component {
       .then(res => {
         const updatedLines = this.state.lines.concat(res.data);
         this.setState({ blogs: updatedLines });
+        console.log("new line added!");
       })
       .catch(err => console.log(err));
   };
